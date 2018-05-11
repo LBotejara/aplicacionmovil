@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
@@ -15,7 +15,8 @@ export class ListadoClientesPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public http: HttpClient) {
+              public http: HttpClient,
+              public modal: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -28,6 +29,18 @@ export class ListadoClientesPage {
             },(error)=>{
               console.log(error);
             })         
+  }
+
+  crearCliente(){
+    let modal = this.modal.create('CrearClientePage')
+
+    modal.onDidDismiss(cliente=>{
+      if(cliente){
+        this.clientes.push(cliente);
+      }
+    })
+
+    modal.present();
   }
 
 }

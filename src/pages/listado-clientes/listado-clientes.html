@@ -1,11 +1,14 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>listadoClientes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only
+              (click)="crearCliente()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-card text-center *ngFor="let cliente of clientes">
