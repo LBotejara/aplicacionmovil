@@ -53,8 +53,8 @@ export class CrearClientePage {
     }
 
     this.http.post('http://localhost:3000/cliente', cliente)
-                .subscribe(res=>{
-                  this.viewController.dismiss()
+                .subscribe(()=>{
+                  this.viewController.dismiss(cliente)
                 },(error)=>{
                   console.log(error)
                 })
