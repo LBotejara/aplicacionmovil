@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>listadoClientes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card text-center *ngFor="let cliente of clientes">
+<ion-card-header text-wrap>
+  <h2>{{cliente.nombre}}</h2>
+</ion-card-header>
+  </ion-card>
+</ion-content>
