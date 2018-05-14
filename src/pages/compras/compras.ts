@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-ventas',
-  templateUrl: 'ventas.html',
+  selector: 'page-compras',
+  templateUrl: 'compras.html',
 })
-export class VentasPage {
+export class ComprasPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -15,12 +15,7 @@ export class VentasPage {
     
   }
 
-  goToClientes(){
-    this.navCtrl.push('ListadoClientesPage')
+  goToProveedores() {
+    this.navCtrl.push('ListadoProveedoresPage')
   }
-
-  goToArticulos(){
-    this.navCtrl.push('ListadoArticulosPage')
-  }
-
 }

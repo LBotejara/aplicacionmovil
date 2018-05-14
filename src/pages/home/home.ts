@@ -16,5 +16,8 @@ export class HomePage {
   goToVentas(){
     this.navCtrl.push('VentasPage');
   }
+goToCompras(){
+  this.navCtrl.push('ComprasPage')
+}
 
 }

@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-crear-cliente',
-  templateUrl: 'crear-cliente.html',
+  selector: 'page-editar-proveedor',
+  templateUrl: 'editar-proveedor.html',
 })
-export class CrearClientePage {
+export class EditarProveedorPage {
+
+  proveedor:any;
 
   provincias:string[] = [
     'Álava','Albacete','Alicante','Almería','Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres',
@@ -17,49 +19,33 @@ export class CrearClientePage {
     'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'
   ]
 
-  cliente = {
-    nombre: null,
-    cif: null,
-    domicilio: null,
-    cp: null,
-    localidad: null,
-    provincia: null,
-    telefono: null,
-    email: null,
-    contacto: null
-  } 
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: HttpClient,
               public viewController: ViewController) {
+        this.proveedor = navParams.get('proveedor');
   }
 
-  ionViewDidLoad() {
-    
-  }
-
-  crearCliente(){
-    let cliente = {
-      nombre: this.cliente.nombre,
-      cif: this.cliente.cif,
-      domicilio: this.cliente.domicilio,
-      cp: this.cliente.cp,
-      localidad: this.cliente.localidad,
-      provincia: this.cliente.provincia,
-      telefono: this.cliente.telefono,
-      email: this.cliente.email,
-      contacto: this.cliente.contacto,
+  modificarProveedor(){
+    let proveedor = {
+      id: this.proveedor.id,
+      nombre: this.proveedor.nombre,
+      cif: this.proveedor.cif,
+      domicilio: this.proveedor.domicilio,
+      cp: this.proveedor.cp,
+      localidad: this.proveedor.localidad,
+      provincia: this.proveedor.id,
+      email: this.proveedor.email,
+      telefono: this.proveedor.telefono,
+      contacto: this.proveedor.contacto
     }
 
-    this.http.post('http://localhost:3000/cliente', cliente)
-                .subscribe(()=>{
-                  // this.viewController.dismiss(cliente);
+    this.http.put('http://localhost:3000/proveedor/'+proveedor.id, proveedor)
+                .subscribe((resp:any)=>{
                   this.viewController.dismiss();
                 },(error)=>{
                   console.log(error)
                 })
-
   }
 
   cancelar(){
@@ -67,4 +53,3 @@ export class CrearClientePage {
   }
 
 }
-

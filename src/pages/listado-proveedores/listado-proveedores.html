@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Listado Proveedores</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only
+                (click)="crearProveedor()">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <ion-card text-center *ngFor="let proveedor of proveedores">
+  <ion-card-header text-wrap>
+    <h2>{{proveedor.nombre}}</h2>
+  </ion-card-header>
+   <ion-card-content>
+     <button ion-button icon-only (click)="verProveedor(proveedor)">
+       <ion-icon name="eye"></ion-icon>
+     </button>
+      <button ion-button icon-only color="secondary" (click)="editarProveedor(proveedor)">
+       <ion-icon name="create"></ion-icon>
+     </button>
+     <button ion-button icon-only color="danger" (click)="eliminarProveedor(proveedor._id)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+   </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

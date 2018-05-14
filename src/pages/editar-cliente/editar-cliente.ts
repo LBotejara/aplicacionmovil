@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-crear-cliente',
-  templateUrl: 'crear-cliente.html',
+  selector: 'page-editar-cliente',
+  templateUrl: 'editar-cliente.html',
 })
-export class CrearClientePage {
+export class EditarClientePage {
+
+  cliente:any;
 
   provincias:string[] = [
     'Álava','Albacete','Alicante','Almería','Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres',
@@ -17,49 +19,33 @@ export class CrearClientePage {
     'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'
   ]
 
-  cliente = {
-    nombre: null,
-    cif: null,
-    domicilio: null,
-    cp: null,
-    localidad: null,
-    provincia: null,
-    telefono: null,
-    email: null,
-    contacto: null
-  } 
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: HttpClient,
               public viewController: ViewController) {
+        this.cliente = navParams.get('cliente');
   }
 
-  ionViewDidLoad() {
-    
-  }
-
-  crearCliente(){
+  modificarCliente(){
     let cliente = {
+      id: this.cliente.id,
       nombre: this.cliente.nombre,
       cif: this.cliente.cif,
       domicilio: this.cliente.domicilio,
       cp: this.cliente.cp,
       localidad: this.cliente.localidad,
-      provincia: this.cliente.provincia,
-      telefono: this.cliente.telefono,
+      provincia: this.cliente.id,
       email: this.cliente.email,
-      contacto: this.cliente.contacto,
+      telefono: this.cliente.telefono,
+      contacto: this.cliente.contacto
     }
 
-    this.http.post('http://localhost:3000/cliente', cliente)
-                .subscribe(()=>{
-                  // this.viewController.dismiss(cliente);
+    this.http.put('http://localhost:3000/cliente/' + cliente.id, cliente)
+                .subscribe((resp:any)=>{
                   this.viewController.dismiss();
                 },(error)=>{
                   console.log(error)
                 })
-
   }
 
   cancelar(){
@@ -67,4 +53,3 @@ export class CrearClientePage {
   }
 
 }
-

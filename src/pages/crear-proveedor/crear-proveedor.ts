@@ -4,10 +4,10 @@ import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-crear-cliente',
-  templateUrl: 'crear-cliente.html',
+  selector: 'page-crear-proveedor',
+  templateUrl: 'crear-proveedor.html',
 })
-export class CrearClientePage {
+export class CrearProveedorPage {
 
   provincias:string[] = [
     'Álava','Albacete','Alicante','Almería','Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres',
@@ -17,7 +17,7 @@ export class CrearClientePage {
     'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'
   ]
 
-  cliente = {
+  proveedor = {
     nombre: null,
     cif: null,
     domicilio: null,
@@ -39,22 +39,22 @@ export class CrearClientePage {
     
   }
 
-  crearCliente(){
-    let cliente = {
-      nombre: this.cliente.nombre,
-      cif: this.cliente.cif,
-      domicilio: this.cliente.domicilio,
-      cp: this.cliente.cp,
-      localidad: this.cliente.localidad,
-      provincia: this.cliente.provincia,
-      telefono: this.cliente.telefono,
-      email: this.cliente.email,
-      contacto: this.cliente.contacto,
+  crearProveedor(){
+    let proveedor = {
+      nombre: this.proveedor.nombre,
+      cif: this.proveedor.cif,
+      domicilio: this.proveedor.domicilio,
+      cp: this.proveedor.cp,
+      localidad: this.proveedor.localidad,
+      provincia: this.proveedor.provincia,
+      telefono: this.proveedor.telefono,
+      email: this.proveedor.email,
+      contacto: this.proveedor.contacto,
     }
 
-    this.http.post('http://localhost:3000/cliente', cliente)
+    this.http.post('http://localhost:3000/proveedor', proveedor)
                 .subscribe(()=>{
-                  // this.viewController.dismiss(cliente);
+                  // this.viewController.dismiss(proveedor);
                   this.viewController.dismiss();
                 },(error)=>{
                   console.log(error)
@@ -67,4 +67,3 @@ export class CrearClientePage {
   }
 
 }
-

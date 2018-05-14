@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Nuevo cliente</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <h3>Nuevo Cliente</h3>
+    <ion-buttons end>
+      <button ion-button icon-only
+      (click)="cancelar()">
+          <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
   <form (ngSubmit)="crearCliente()">
     <ion-item text-wrap>
@@ -36,21 +41,15 @@
                          [(ngModel)]="cliente.localidad">
               </ion-input>
             </ion-item>
-            <!-- <ion-item text-wrap>
+            <ion-item text-wrap>
                 <ion-label stacked>Provincia</ion-label>
-                <ion-select name="provincia" [(ngModel)]="provincia">
+                <ion-select name="provincia" [(ngModel)]="cliente.provincia">
                   <ion-option *ngFor="let provincia of provincias"
                               value="provincia">
                     {{provincia}}
                   </ion-option>
                 </ion-select>
-              </ion-item> -->
-              <ion-item text-wrap>
-                  <ion-label stacked>Provincia</ion-label>
-                  <ion-input type="text" name="provincia"
-                             [(ngModel)]="cliente.provincia">
-                  </ion-input>
-                </ion-item>
+              </ion-item>
               <ion-item text-wrap>
                   <ion-label stacked>Teléfono</ion-label>
                   <ion-input type="text" name="telefono"
@@ -69,8 +68,10 @@
                                  [(ngModel)]="cliente.contacto">
                       </ion-input>
                     </ion-item>
-                    <button ion-button type="submit">
-                      Crear cliente
-                    </button>
+                    <div class="text-center">
+                      <button ion-button type="submit">
+                        Crear cliente
+                      </button>
+                  </div>
   </form>
 </ion-content>
