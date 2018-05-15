@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CrearArticuloPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CrearArticuloPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  articulo = {
+    referencia: null,
+    precio: null,
+  } 
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: HttpClient,
+    public viewController: ViewController) {
+}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CrearArticuloPage');
+
+  }
+
+  crearArticulo(){
+    let articulo = {
+      referencia: this.articulo.referencia,
+      precio: this.articulo.precio,
+    }
+
+    this.http.post('http://localhost:3000/articulo', articulo)
+                .subscribe(()=>{
+                  // this.viewController.dismiss(articulo);
+                  this.viewController.dismiss();
+                },(error)=>{
+                  console.log(error)
+                })
+
+  }
+
+  cancelar(){
+    this.viewController.dismiss();
   }
 
 }

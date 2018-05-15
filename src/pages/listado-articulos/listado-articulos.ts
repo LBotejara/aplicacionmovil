@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-
 @IonicPage()
 @Component({
   selector: 'page-listado-articulos',
@@ -24,7 +23,7 @@ export class ListadoArticulosPage {
   }
 
   cargarArticulos(){
-    this.http.get('http://localhost:3000/cliente')
+    this.http.get('http://localhost:3000/articulo')
     .map((resp:any)=>{
       return resp
     })

@@ -7,17 +7,17 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  mensaje:string = "¡Hola Mundo!";
+  mensaje: string = "¡Hola Mundo!";
 
   constructor(public navCtrl: NavController) {
 
   }
 
-  goToVentas(){
+  goToVentas() {
     this.navCtrl.push('VentasPage');
   }
-goToCompras(){
-  this.navCtrl.push('ComprasPage')
-}
+  goToCompras() {
+    this.navCtrl.push('ComprasPage')
+  }
 
 }
